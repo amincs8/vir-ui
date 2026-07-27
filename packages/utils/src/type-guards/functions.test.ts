@@ -37,7 +37,7 @@ describe("Type Guards: Functions", () => {
     { value: new Date(), expected: false },
     { value: new Set(), expected: false },
     { value: new Map(), expected: false },
-  ])("array predicates for $value", ({ value, expectations, expected }) => {
+  ])("function predicates for $value", ({ value, expectations, expected }) => {
     expect(isFunction(value)).toBe(expected ?? expectations.isFunction);
     expect(isFunctionAsync(value)).toBe(expected ?? expectations.isFunctionAsync);
   });

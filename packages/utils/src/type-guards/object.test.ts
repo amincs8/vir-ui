@@ -75,7 +75,7 @@ describe("Type Guards: Object", () => {
     { value: true, expected: false },
     { value: () => 0, expected: false },
   ])(
-    "array predicates for $value, $instanceOf",
+    "object predicates for $value, $instanceOf",
     ({ value, expectations, expected, instanceOf = Object }) => {
       expect(isObject(value)).toBe(expected ?? expectations.isObject);
       expect(isObjectOfType(value, instanceOf)).toBe(expected ?? expectations.isObjectOfType);

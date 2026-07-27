@@ -3,12 +3,21 @@ import dts from "vite-plugin-dts";
 
 export default defineConfig({
   build: {
+    minify: false,
     lib: {
       entry: "src/index.ts",
       fileName: "index",
       formats: ["es"],
     },
-    sourcemap: true,
+    sourcemap: false,
+    rolldownOptions: {
+      external: [],
+      output: {
+        preserveModules: true, // 👈 keep module structure
+        preserveModulesRoot: "src", // 👈 trim folder nesting
+        entryFileNames: "[name].js",
+      },
+    },
   },
 
   plugins: [

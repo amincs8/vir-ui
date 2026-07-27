@@ -1,0 +1,441 @@
+# Vir Kit
+
+A modern, cross-framework UI component library built with **Vue 3** and **React**.
+
+This project is a monorepo containing reusable components, shared styles, utilities, and tooling for building consistent user interfaces across different frontend frameworks.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![pnpm](https://img.shields.io/badge/pnpm-workspace-F69220)](https://pnpm.io/)
+[![Turbo](https://img.shields.io/badge/Turborepo-enabled-EF4444)](https://turbo.build/)
+
+---
+
+## ✨ Features
+
+- ⚛️ React component library
+- 🟩 Vue 3 component library
+- 🎨 Shared design tokens and styles
+- 🌙 Theme support
+- 📦 pnpm workspace monorepo
+- ⚡ Turborepo build pipeline
+- 🔥 TypeScript-first development
+- 🧪 Vitest testing
+- 📚 Storybook documentation
+- 🧹 ESLint + Prettier
+- 📝 Changesets changelog management
+- 📄 MIT License
+
+---
+
+# 📦 Packages
+
+| Package | Description |
+| --- | --- |
+| `@vir/react` | React UI components |
+| `@vir/vue` | Vue 3 UI components |
+| `@vir/styles` | Shared CSS variables, tokens, and themes |
+| `@vir/utils` | Shared utility functions |
+
+---
+
+# 🏗 Repository Structure
+
+```
+vir-kit
+│
+├── packages
+│   │
+│   ├── react
+│   │   ├── src
+│   │   ├── stories
+│   │   └── tests
+│   │
+│   ├── vue
+│   │   ├── src
+│   │   ├── stories
+│   │   └── tests
+│   │
+│   ├── styles
+│   │   └── design tokens
+│   │
+│   └── utils
+│       └── shared helpers
+│
+├── .changeset
+│
+├── turbo.json
+├── pnpm-workspace.yaml
+├── tsconfig.json
+├── eslint.config.js
+├── .prettierrc
+└── package.json
+```
+
+---
+
+# 🚀 Getting Started
+
+## Requirements
+
+- Node.js >= 20
+- pnpm >= 9
+
+Check your versions:
+
+```bash
+node -v
+pnpm -v
+```
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-name/vir-kit.git
+
+cd vir-kit
+```
+
+Install dependencies:
+
+```bash
+pnpm install
+```
+
+---
+
+# Development
+
+Run all packages:
+
+```bash
+pnpm dev
+```
+
+Run a specific package:
+
+```bash
+pnpm --filter @vir/react dev
+```
+
+or:
+
+```bash
+pnpm --filter @vir/vue dev
+```
+
+---
+
+# Build
+
+Build every package:
+
+```bash
+pnpm build
+```
+
+Build a single package:
+
+```bash
+pnpm --filter @vir/react build
+```
+
+---
+
+# Testing
+
+This project uses **Vitest**.
+
+Run all tests:
+
+```bash
+pnpm test
+```
+
+Run tests with UI:
+
+```bash
+pnpm test:ui
+```
+
+Run package tests:
+
+```bash
+pnpm --filter @vir/react test
+```
+
+---
+
+# Storybook
+
+Storybook provides interactive component documentation.
+
+## React Storybook
+
+Start:
+
+```bash
+pnpm --filter @vir/react storybook
+```
+
+Open:
+
+```
+http://localhost:6006
+```
+
+---
+
+## Vue Storybook
+
+Start:
+
+```bash
+pnpm --filter @vir/vue storybook
+```
+
+Open:
+
+```
+http://localhost:6007
+```
+
+---
+
+# Styling System
+
+The shared styling package contains:
+
+- CSS variables
+- Design tokens
+- Typography
+- Colors
+- Spacing
+- Themes
+
+Example:
+
+```css
+.button {
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+}
+```
+
+Import styles:
+
+```css
+@import "@vir/styles";
+```
+
+---
+
+# Component Development
+
+A component should include:
+
+```
+Button
+├── Button.tsx / Button.vue
+├── Button.test.ts
+├── Button.stories.ts
+└── index.ts
+```
+
+Every component should provide:
+
+- TypeScript types
+- Tests
+- Storybook documentation
+- Accessibility support
+
+---
+
+# Adding Dependencies
+
+Add a dependency to a package:
+
+Example:
+
+```bash
+pnpm add lodash --filter @vir/utils
+```
+
+Add an internal package dependency:
+
+```bash
+pnpm add @vir/utils --filter @vir/react
+```
+
+Result:
+
+```json
+{
+  "dependencies": {
+    "@vir/utils": "workspace:*"
+  }
+}
+```
+
+---
+
+# Code Quality
+
+## Lint
+
+Run ESLint:
+
+```bash
+pnpm lint
+```
+
+---
+
+## Format
+
+Run Prettier:
+
+```bash
+pnpm format
+```
+
+---
+
+# Versioning & Changelog
+
+This project uses **Changesets**.
+
+Create a changeset:
+
+```bash
+pnpm changeset
+```
+
+Example:
+
+```
+@vir/react
+
+minor
+
+Added Button component
+```
+
+Update versions:
+
+```bash
+pnpm version
+```
+
+Publish packages:
+
+```bash
+pnpm release
+```
+
+---
+
+# Publishing
+
+Packages are published independently.
+
+Example:
+
+```bash
+pnpm --filter @vir/react publish
+```
+
+Before publishing:
+
+```bash
+pnpm lint
+pnpm test
+pnpm build
+```
+
+---
+
+# Design Goals
+
+## Framework Agnostic
+
+Vue and React components share:
+
+- Same design language
+- Same tokens
+- Same accessibility principles
+
+while keeping framework-specific APIs.
+
+---
+
+## TypeScript First
+
+All packages provide:
+
+- Strong typing
+- Auto completion
+- Type-safe APIs
+
+---
+
+## Accessibility
+
+Components follow:
+
+- Semantic HTML
+- Keyboard navigation
+- ARIA guidelines
+
+---
+
+# Contributing
+
+Contributions are welcome.
+
+## Development Flow
+
+Create a branch:
+
+```bash
+git checkout -b feature/new-component
+```
+
+Install dependencies:
+
+```bash
+pnpm install
+```
+
+Develop:
+
+```bash
+pnpm dev
+```
+
+Run checks:
+
+```bash
+pnpm lint
+pnpm test
+pnpm build
+```
+
+Create a changeset:
+
+```bash
+pnpm changeset
+```
+
+Submit a pull request.
+
+---
+
+# License
+
+This project is licensed under the MIT License.
+
+See [LICENSE](./LICENSE) for details.

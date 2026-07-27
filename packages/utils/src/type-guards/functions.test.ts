@@ -27,7 +27,6 @@ describe("Type Guards: Functions", () => {
     { value: "string", expected: false },
     { value: "", expected: false },
     { value: undefined, expected: false },
-    { value: undefined, expected: false },
     { value: 100, expected: false },
     { value: false, expected: false },
     { value: true, expected: false },

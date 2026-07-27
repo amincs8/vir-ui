@@ -1,0 +1,30 @@
+{
+  "name": "@vir/utils",
+  "version": "0.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "vite build",
+    "lint": "eslint src",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "author": "AminCS amincs@outlook.com",
+  "license": "MIT",
+  "type": "module",
+  "private": false,
+  "sideEffects": false,
+  "devDependencies": {
+    "vite": "^8.1.5",
+    "vite-plugin-dts": "^5.0.3"
+  }
+}

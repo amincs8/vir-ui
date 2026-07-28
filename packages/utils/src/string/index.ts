@@ -5,3 +5,4 @@ export * from "./kebab-case";
 export * from "./reverse";
 export * from "./snake-case";
 export * from "./split-words";
+export * from "./trim";

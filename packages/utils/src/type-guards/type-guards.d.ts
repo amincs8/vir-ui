@@ -8,3 +8,5 @@ export type EmptyString = {
 export type NonEmptyString = {
   readonly __brand: "NonEmptyString";
 } & string;
+
+export type PlainObject = Record<string | number | symbol, unknown>

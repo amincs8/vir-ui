@@ -1,3 +1,5 @@
+import { PlainObject } from "./type-guards";
+
 export function isObject (value: unknown): value is object {
   return typeof value === "object" && value !== null;
 }
@@ -13,7 +15,7 @@ export function isObjectOfType<T extends object> (
   );
 }
 
-export function isPlainObject (value: unknown): value is Record<string, unknown> {
+export function isPlainObject (value: unknown): value is PlainObject {
   return (
     value !== null &&
     typeof value === "object" &&

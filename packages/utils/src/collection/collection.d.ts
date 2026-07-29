@@ -1,0 +1,2 @@
+export type IterableCallback<T = unknown, R = unknown> = (value: T, index: number) => R;
+export type PlainObjectCallback<T = PlainObject, R = unknown> = (key: keyof T, value: [keyof T], index: number) => R;

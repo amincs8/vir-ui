@@ -19,7 +19,6 @@ describe("String: CamelCase", () => {
     { value: null, expected: "" },
     { value: undefined, expected: "" },
   ])("camelCase predicates for $value", ({ value, expected }) => {
-    console.log(value, camelCase(value as unknown as string));
     expect(camelCase(value as unknown as string)).toBe(expected);
   });
 });

@@ -9,4 +9,4 @@ export type NonEmptyString = {
   readonly __brand: "NonEmptyString";
 } & string;
 
-export type PlainObject = Record<string | number | symbol, unknown>
+export type PlainObject<T = unknown> = Record<PropertyKey, T>

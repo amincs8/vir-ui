@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { each, forEach } from "./each";
 
-describe("Coleesction: Each", () => {
+describe("Collections: Each", () => {
   it.for([
     { value: [1, 2, 3]},
     { value: new Set([1, 2, 3]) },

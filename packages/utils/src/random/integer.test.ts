@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { randomInteger } from "./integer";
+import { randomInteger, randomSecureInteger } from "./integer";
 
 describe("Random: Integer", () => {
   it.for([
@@ -19,8 +19,9 @@ describe("Random: Integer", () => {
       min: -.5,
       max: 2.5,
     },
-  ])("randomInteger predicates for ($min, $max)", ({ min, max }) => {
+  ])("randomInteger/SecureInteger predicates for ($min, $max)", ({ min, max }) => {
     expect(randomInteger(min, max)).toSatisfy((value) => value >= min && value <= max);
+    expect(randomSecureInteger(min, max)).toSatisfy((value) => value >= min && value <= max);
   });
 
   it.for([
@@ -32,8 +33,9 @@ describe("Random: Integer", () => {
       min: -100,
       max: 100,
     },
-  ])("randomInteger predicates for ($max, $min)", ({ min, max }) => {
+  ])("randomInteger/SecureInteger predicates for ($max, $min)", ({ min, max }) => {
     expect(randomInteger(max, min)).toSatisfy((value) => value >= min && value <= max);
+    expect(randomSecureInteger(max, min)).toSatisfy((value) => value >= min && value <= max);
   });
 
   it.for([
@@ -69,8 +71,10 @@ describe("Random: Integer", () => {
       value1: null,
       value2: NaN,
     },
-  ])("randomInteger predicates for ($value1, $value2)", ({ value1, value2 }) => {
+  ])("randomInteger/SecureInteger predicates for ($value1, $value2)", ({ value1, value2 }) => {
     expect(randomInteger(value1 as any, value2 as any)).toBeNaN();
     expect(randomInteger(value2 as any, value1 as any)).toBeNaN();
+    expect(randomSecureInteger(value2 as any, value1 as any)).toBeNaN();
+    expect(randomSecureInteger(value2 as any, value1 as any)).toBeNaN();
   });
 });

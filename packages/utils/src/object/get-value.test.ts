@@ -614,12 +614,20 @@ describe("Object: getValue", () => {
   );
 
   it.for([
+    { value: 1, path: ".toFixed" },
+    { value: "string", path: ".length" },
+  ])("Return values for non objects", ({ value, path }) => {
+    console.log(value, getValue(value as unknown as object, path));
+    expect(getValue(value as unknown as object, path)).toBeDefined();
+  });
+
+  it.for([
     { value: null },
     { value: 1 },
     { value: "string" },
     { value: undefined },
     { value: Symbol() },
-  ])("Return false for non objects", ({ value }) => {
+  ])("Return undefined for non objects", ({ value }) => {
     expect(getValue(value as unknown as object, ".key")).toBe(undefined);
   });
 });

@@ -1,6 +1,6 @@
 import { PlainObject } from "./type-guards";
 
-export function isObject (value: unknown): value is object {
+export function isObject<T = unknown> (value: T): value is T & object {
   return typeof value === "object" && value !== null;
 }
 

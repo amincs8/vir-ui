@@ -1,3 +1,5 @@
+export * from "./type-guards.d";
+
 export * from "./array";
 export * from "./boolean";
 export * from "./function";

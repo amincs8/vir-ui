@@ -1,3 +1,5 @@
+export * from "./collection.d";
+
 export * from "./each";
 export * from "./every";
 export * from "./group-by";

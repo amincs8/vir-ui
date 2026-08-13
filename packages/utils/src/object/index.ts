@@ -1,3 +1,5 @@
+export * from "./object.d";
+
 export * from "./get-value";
 export * from "./has-key";
 export * from "./merge";

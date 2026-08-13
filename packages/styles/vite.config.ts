@@ -1,7 +1,7 @@
 import { mergeConfig } from "vite";
-import { baseVitestConfig } from "../../configs/vitest/base";
+import { baseViteConfig } from "../../configs/vite/base";
 
 export default mergeConfig(
-  baseVitestConfig,
+  baseViteConfig,
   {},
 );

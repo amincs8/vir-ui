@@ -17,7 +17,10 @@
   },
   "scripts": {
     "build": "vite build",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "vite": "^8.2.1",

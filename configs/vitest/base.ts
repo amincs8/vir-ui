@@ -1,5 +1,4 @@
 import { defineConfig } from "vitest/config";
-import tsconfigPaths from "vite-tsconfig-paths";
 
 export const baseVitestConfig = defineConfig({
   test: {
@@ -8,7 +7,7 @@ export const baseVitestConfig = defineConfig({
     include: ["src/**/*.test.ts"],
     restoreMocks: true,
   },
-  plugins: [
-    tsconfigPaths(),
-  ],
+  resolve: {
+    tsconfigPaths: true,
+  },
 });

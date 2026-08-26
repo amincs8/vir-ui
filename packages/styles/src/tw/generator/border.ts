@@ -1,5 +1,5 @@
 import { isUndefined } from "@vir/utils";
-import { Theme } from "../../types";
+import { Theme } from "@/types";
 
 const KEYS = [
   "width",

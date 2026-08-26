@@ -1,4 +1,4 @@
-import { Theme } from "../../types";
+import { Theme } from "@/types";
 import { UTILITY_PREFIX } from "./consts";
 
 export function generateZIndex (zIndex: Theme["zIndex"]): string {

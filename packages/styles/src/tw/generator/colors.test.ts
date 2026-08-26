@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { generateColors } from "./colors";
-import { Theme } from "../../types";
+import { Theme } from "@/types";
 
 describe("Twailwind Generators: Colors", () => {
   it("should generate CSS variables for colors", () => {

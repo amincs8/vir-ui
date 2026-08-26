@@ -1,5 +1,5 @@
 import { isPlainObject, isStringNonEmpty, kebabCase } from "@vir/utils";
-import { Theme } from "../../types";
+import { Theme } from "@/types";
 import { COLOR_VARIABLE_PREFIX, DEFAULT_ROLE_NAME } from "./consts";
 
 export function generateColors (colors: Theme["colors"]): string {

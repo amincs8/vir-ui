@@ -4,3 +4,5 @@ export * from "./collection";
 export * from "./object";
 export * from "./string";
 export * from "./type-guards";
+
+export * from "./types.d";

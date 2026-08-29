@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { generateZIndex } from "./z-index";
 
-describe("Twailwind Generators: zIndex", () => {
+describe("Tailwind Generators: zIndex", () => {
   it("should generate z-index utilities", () => {
     const zIndex = {
       base: 0,

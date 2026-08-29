@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { generateBorder } from "./border";
 
-describe("Twailwind Generators: Border", () => {
+describe("Tailwind Generators: Border", () => {
   it("should generate CSS variables for border", () => {
     const result = generateBorder(
       {

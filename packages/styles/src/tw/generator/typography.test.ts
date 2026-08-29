@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { generateTypography } from "./typography";
 
-describe("Twailwind Generators: Typography", () => {
+describe("Tailwind Generators: Typography", () => {
   it("should generate CSS vars for typography", () => {
     const result = generateTypography(
       {

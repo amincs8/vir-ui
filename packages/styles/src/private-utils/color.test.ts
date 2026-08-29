@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { numberToColorHex } from "./color";
 
-describe("numberToColor", () => {
+describe("Private Utils: numberToColorHex", () => {
   it.for([
     { value: 255, expected: "#0000ff" },
     { value: 0x0000ff, expected: "#0000ff" },

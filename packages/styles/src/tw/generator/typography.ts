@@ -1,6 +1,6 @@
-import { toSize } from "@/private-utils";
+import { generateTailwindThemeValue } from "@/private-utils";
 import { Theme } from "@/types";
-import { isFunction } from "@vir/utils";
+import { isArray, isUndefined, kebabCase } from "@vir/utils";
 
 const KEYS: {
   key: string;
@@ -14,7 +14,6 @@ const KEYS: {
   {
     key: "fontSize",
     prefix: "--text",
-    valueConvertor: toSize,
   },
   {
     key: "fontWeight",
@@ -30,14 +29,34 @@ const KEYS: {
   },
 ];
 
-export function generateTypography (typography: Theme["typography"], prefix: Theme["prefix"]): string {
+export function generateTypography (typography: Theme["typography"], themePrefix: Theme["prefix"]): string {
   let result = "";
 
   for (const key of KEYS) {
-    const value = isFunction(key.valueConvertor)
-      ? key.valueConvertor(typography[key.key as keyof Theme["typography"]])
-      : typography[key.key as keyof Theme["typography"]];
-    result += `${key.prefix}-${prefix}: ${value};\n`;
+    if (!isUndefined(typography[key.key as keyof Theme["typography"]])) {
+      let value: string;
+
+      if (isArray(typography[key.key as keyof Theme["typography"]])) {
+        const values: string[] = [];
+        for (const val of typography[key.key as keyof Theme["typography"]] as string[]) {
+          values.push(generateTailwindThemeValue({
+            value: val!,
+            type: kebabCase(key.key) as any,
+            themePrefix,
+          }));
+        }
+
+        value = values.join(", ");
+      } else {
+        value = generateTailwindThemeValue({
+          value: typography[key.key as keyof Theme["typography"]]!,
+          type: kebabCase(key.key) as any,
+          themePrefix,
+        });
+      }
+
+      result += `${key.prefix}-${themePrefix}: ${value};\n`;
+    }
   }
 
   return result;

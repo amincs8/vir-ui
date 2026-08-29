@@ -5,7 +5,7 @@ describe("Tailwind Generators: Typography", () => {
   it("should generate CSS vars for typography", () => {
     const result = generateTypography(
       {
-        fontFamily: ["sans"],
+        fontFamily: ["sans", "monospace"],
         fontSize: 16,
         fontWeight: 700,
         lineHeight: 1.5,
@@ -15,7 +15,7 @@ describe("Tailwind Generators: Typography", () => {
     );
 
     expect(result).toBe(
-      `--font-base: sans;
+      `--font-base: sans, monospace;
 --text-base: 16px;
 --font-weight-base: 700;
 --leading-base: 1.5;

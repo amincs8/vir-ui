@@ -1,5 +1,5 @@
 import { generateTailwindThemeValue } from "@/private-utils";
-import { kebabCase, Numberish } from "@vir/utils";
+import { Numberish } from "@vir/utils";
 import { DEFAULT_ROLE_NAME, TypePrefix } from "./consts";
 import { generateVarName } from "./var";
 
@@ -25,8 +25,8 @@ export function generateColorVarName ({
   const varName = generateVarName(
     TypePrefix.color.prefix,
     colorName,
-    colorScale === DEFAULT_ROLE_NAME ? "" : kebabCase(colorScale.toString()),
+    colorScale === DEFAULT_ROLE_NAME ? "" : String(colorScale),
   );
 
-  return `${varName}: ${value}`;
+  return `${varName}: ${value};`;
 }

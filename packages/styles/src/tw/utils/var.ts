@@ -1,4 +1,4 @@
-import { isArray, isStringNonEmpty } from "@vir/utils";
+import { isArray, isStringNonEmpty, kebabCase } from "@vir/utils";
 import { VAR_PREFIX, VAR_SEPARATOR } from "./consts";
 
 type Arg = string | undefined;
@@ -16,7 +16,7 @@ export function generateVarName (...values: [Arg[]] | Arg[]): string {
 
   for (let i = 1; i < parts.length; ++i) {
     if (isStringNonEmpty(parts[i])) {
-      result = `${result}${VAR_SEPARATOR}${parts[i]}`;
+      result = `${result}${VAR_SEPARATOR}${kebabCase(parts[i]! as string)}`;
     }
   }
 

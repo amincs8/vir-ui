@@ -3,19 +3,19 @@ import { Numberish } from "@vir/utils";
 import { DEFAULT_ROLE_NAME, TypePrefix } from "./consts";
 import { generateVarName } from "./var";
 
-interface GenerateColorVarNameOptions {
+interface generateColorVarLineOptions {
   colorName: string;
   colorScale: Numberish;
   colorValue: Numberish;
   themePrefix: string;
 }
 
-export function generateColorVarName ({
+export function generateColorVarLine ({
   colorName,
   colorScale,
   colorValue,
   themePrefix,
-}: GenerateColorVarNameOptions): string {
+}: generateColorVarLineOptions): string {
   const value = generateTailwindThemeValue({
     value: colorValue,
     type: "color",

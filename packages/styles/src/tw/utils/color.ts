@@ -28,5 +28,5 @@ export function generateColorVarLine ({
     colorScale === DEFAULT_ROLE_NAME ? "" : String(colorScale),
   );
 
-  return `${varName}: ${value};`;
+  return `${varName}: ${value || "\"\""};`;
 }

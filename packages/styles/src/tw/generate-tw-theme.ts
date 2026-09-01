@@ -7,6 +7,7 @@ import {
   generateSurface,
   generateTypography,
   generateZIndex,
+  generateContainer,
 } from "./generator";
 
 const VAR_GENERATORS: Record<string, (...config: any[]) => string> = {
@@ -20,6 +21,7 @@ const VAR_GENERATORS: Record<string, (...config: any[]) => string> = {
 };
 
 const UTILITY_GENERATORS: Record<string, (...config: any[]) => string> = {
+  container: generateContainer,
   zIndex: generateZIndex,
 };
 
@@ -38,7 +40,7 @@ export function generateTailwindTheme (theme: Theme): string {
     utilitySection += UTILITY_GENERATORS[key as keyof typeof UTILITY_GENERATORS]!(
       theme[key as keyof typeof theme]!,
       theme.prefix,
-    );
+    ) + "\n";
   }
 
   return `@theme {\n${themeSection}}\n${utilitySection}`;

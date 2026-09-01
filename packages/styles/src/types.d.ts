@@ -1,3 +1,5 @@
+import { Numberish } from "@vir/utils";
+
 export type ColorScale = Record<string | number, string>;
 export type ColorValue = string | ColorScale;
 
@@ -70,6 +72,12 @@ export interface Typography {
   letterSpacing?: string | number;
 }
 
+export interface Container {
+  center: boolean;
+  paddingX?: number | [Numberish, number][];
+  paddingY?: number | [Numberish, number][];
+}
+
 export interface ZIndex {
   base: number;
   dropdown: number;
@@ -93,5 +101,8 @@ export interface Theme {
   outline: Outline;
   surface: Surface;
   typography: Typography;
+
+  // Utilities
+  container: Container;
   zIndex: ZIndex;
 }

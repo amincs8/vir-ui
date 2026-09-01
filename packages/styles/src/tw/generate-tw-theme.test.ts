@@ -15,7 +15,8 @@ describe("generate-tw-theme", () => {
           EXPECTED.surface.trim(),
           EXPECTED.typography.trim(),
         ].join("\n") +
-        "\n}\n" + EXPECTED.zIndex.trim(),
+        "\n}\n" +
+        [EXPECTED.container.trim(), EXPECTED.zIndex.trim()].join("\n"),
     );
   });
 });

@@ -139,7 +139,7 @@ export const EXPECTED = {
   outline: `--outline-${VIR_THEME.prefix}-width: 1px;
 --outline-${VIR_THEME.prefix}-style: solid;
 --outline-${VIR_THEME.prefix}-color: var(--color-gray-200);
---outline-${VIR_THEME.prefix}-radius: 2px;
+--outline-${VIR_THEME.prefix}-offset: 2px;
 `,
   divider: `--divider-${VIR_THEME.prefix}-width: 1px;
 --divider-${VIR_THEME.prefix}-style: solid;

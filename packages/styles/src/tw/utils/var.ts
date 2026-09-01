@@ -1,6 +1,6 @@
 import { isArray, isStringNonEmpty, kebabCase, Numberish } from "@vir/utils";
 import { DEFAULT_ROLE_NAME, TypePrefix, VAR_PREFIX, VAR_SEPARATOR } from "./consts";
-import { generateTailwindThemeValue } from "@/private-utils";
+import { generateThemeValue } from "./tw";
 
 type Arg = string | undefined;
 
@@ -32,7 +32,7 @@ export function generateVarName (...values: [Arg[]] | Arg[]): string {
 }
 
 export function generateVarLine (options: GenerateVarLineOptions): string {
-  const generatedValue = generateTailwindThemeValue({
+  const generatedValue = generateThemeValue({
     value: options.value,
     type: options.type,
     themePrefix: options.themePrefix,

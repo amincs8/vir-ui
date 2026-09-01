@@ -1,6 +1,6 @@
 import { isUndefined } from "@vir/utils";
 import { Theme } from "@/types";
-import { generateTailwindThemeValue } from "@/private-utils";
+import { generateThemeValue } from "@/tw/utils";
 import { DIVIDER_PREFIX, generateVarName } from "../utils";
 import { VarType } from "../utils/utils";
 
@@ -28,7 +28,7 @@ export function generateDivider (divider: Theme["divider"], themePrefix: Theme["
       const generatedValue =
         keyInfo.type === ""
           ? keyValue
-          : generateTailwindThemeValue({
+          : generateThemeValue({
             value: keyValue,
             type: keyInfo.type,
             themePrefix,

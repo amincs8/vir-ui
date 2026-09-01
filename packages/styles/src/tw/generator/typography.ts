@@ -1,4 +1,4 @@
-import { generateTailwindThemeValue } from "@/private-utils";
+import { generateThemeValue } from "@/tw/utils";
 import { Theme } from "@/types";
 import { isArray, isUndefined, kebabCase } from "@vir/utils";
 
@@ -29,7 +29,10 @@ const KEYS: {
   },
 ];
 
-export function generateTypography (typography: Theme["typography"], themePrefix: Theme["prefix"]): string {
+export function generateTypography (
+  typography: Theme["typography"],
+  themePrefix: Theme["prefix"],
+): string {
   let result = "";
 
   for (const key of KEYS) {
@@ -39,16 +42,18 @@ export function generateTypography (typography: Theme["typography"], themePrefix
       if (isArray(typography[key.key as keyof Theme["typography"]])) {
         const values: string[] = [];
         for (const val of typography[key.key as keyof Theme["typography"]] as string[]) {
-          values.push(generateTailwindThemeValue({
-            value: val!,
-            type: kebabCase(key.key) as any,
-            themePrefix,
-          }));
+          values.push(
+            generateThemeValue({
+              value: val!,
+              type: kebabCase(key.key) as any,
+              themePrefix,
+            }),
+          );
         }
 
         value = values.join(", ");
       } else {
-        value = generateTailwindThemeValue({
+        value = generateThemeValue({
           value: typography[key.key as keyof Theme["typography"]]!,
           type: kebabCase(key.key) as any,
           themePrefix,

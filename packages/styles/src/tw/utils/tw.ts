@@ -1,6 +1,6 @@
 import { Arrayable, isArray, isFunction, isNumber, isString } from "@vir/utils";
-import { numberToColorHex } from "./color";
-import { GenerateTailwindThemeValueOptions, VarType } from "./private-utils";
+import { numberToColorHex } from "@/private-utils";
+import { generateThemeValueOptions, VarType } from "./utils";
 
 const DOT_REPLACE_REGEX = /(?<!\\)\./g;
 const SLASH_DOT_REPLACE_REGEX = /\\\./g;
@@ -106,7 +106,7 @@ function toVarStatement (type: VarType, value: Arrayable<string>, themePrefix: s
   return _toVarStatement(type, isArray(value) ? value : [value], 0, themePrefix);
 }
 
-export function generateTailwindThemeValue (options: GenerateTailwindThemeValueOptions): string {
+export function generateThemeValue (options: generateThemeValueOptions): string {
   let result = "";
 
   if (isString(options.value) || isArray(options.value)) {

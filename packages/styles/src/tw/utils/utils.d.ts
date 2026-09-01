@@ -12,7 +12,7 @@ export type VarType =
   | "letter-spacing"
   | "border-radius";
 
-export interface GenerateTailwindThemeValueOptions {
+export interface generateThemeValueOptions {
   type: VarType;
   value: Numberish | string[];
   themePrefix: string;

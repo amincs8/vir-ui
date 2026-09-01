@@ -1,7 +1,7 @@
 import { isUndefined } from "@vir/utils";
 import { Theme } from "@/types";
 import { BORDER_PREFIX, generateVarLine, generateVarName } from "../utils";
-import { generateTailwindThemeValue } from "@/private-utils";
+import { generateThemeValue } from "@/tw/utils";
 import { VarType } from "../utils/utils";
 
 type KeyType = keyof Theme["border"];
@@ -32,7 +32,7 @@ export function generateBorder (border: Theme["border"], themePrefix: Theme["pre
       const generatedValue =
         keyInfo.type === ""
           ? keyValue
-          : generateTailwindThemeValue({
+          : generateThemeValue({
             value: keyValue,
             type: keyInfo.type,
             themePrefix,

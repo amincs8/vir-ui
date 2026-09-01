@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { generateTailwindThemeValue } from "./tw";
-import { VarType } from "./private-utils";
+import { generateThemeValue } from "./tw";
+import { VarType } from "./utils";
 
-describe("Private Utils: Tailwind/generateTailwindThemeValue", () => {
+describe("Private Utils: Tailwind/generateThemeValue", () => {
   it.for([
     { type: "color", value: "blue", expected: "blue" },
     { type: "color", value: "--color-blue-500", expected: "var(--color-blue-500)" },
@@ -105,6 +105,8 @@ describe("Private Utils: Tailwind/generateTailwindThemeValue", () => {
       expected: "var(--radius-value)",
     },
   ])("should convert $type/$value to $expected", ({ type, value, prefix, expected }) => {
-    expect(generateTailwindThemeValue({ type: type as VarType, value, themePrefix: prefix ?? "" })).toBe(expected);
+    expect(generateThemeValue({ type: type as VarType, value, themePrefix: prefix ?? "" })).toBe(
+      expected,
+    );
   });
 });

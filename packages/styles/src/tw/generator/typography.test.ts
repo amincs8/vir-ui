@@ -1,26 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { generateTypography } from "./typography";
+import { EXPECTED, VIR_THEME } from "../test/consts-test";
 
 describe("Tailwind Generators: Typography", () => {
   it("should generate CSS vars for typography", () => {
-    const result = generateTypography(
-      {
-        fontFamily: ["sans", "monospace"],
-        fontSize: 16,
-        fontWeight: 700,
-        lineHeight: 1.5,
-        letterSpacing: "0",
-      },
-      "base",
-    );
-
-    expect(result).toBe(
-      `--font-base: sans, monospace;
---text-base: 16px;
---font-weight-base: 700;
---leading-base: 1.5;
---tracking-base: 0;
-`,
-    );
+    expect(generateTypography(VIR_THEME.typography, VIR_THEME.prefix)).toBe(EXPECTED.typography);
   });
 });

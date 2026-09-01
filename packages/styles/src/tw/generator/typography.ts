@@ -1,31 +1,32 @@
-import { generateThemeValue } from "@/tw/utils";
+import { generateVarLine } from "@/tw/utils";
 import { Theme } from "@/types";
-import { isArray, isUndefined, kebabCase } from "@vir/utils";
+import { isArray, isUndefined, reduce, trim } from "@vir/utils";
+import { VarType } from "../utils/utils";
 
 const KEYS: {
   key: string;
-  prefix: string;
+  type: VarType;
   valueConvertor?: (value: any) => string;
 }[] = [
   {
     key: "fontFamily",
-    prefix: "--font",
+    type: "font-family",
   },
   {
     key: "fontSize",
-    prefix: "--text",
+    type: "font-size",
   },
   {
     key: "fontWeight",
-    prefix: "--font-weight",
+    type: "font-weight",
   },
   {
     key: "lineHeight",
-    prefix: "--leading",
+    type: "line-height",
   },
   {
     key: "letterSpacing",
-    prefix: "--tracking",
+    type: "letter-spacing",
   },
 ];
 
@@ -36,31 +37,14 @@ export function generateTypography (
   let result = "";
 
   for (const key of KEYS) {
-    if (!isUndefined(typography[key.key as keyof Theme["typography"]])) {
-      let value: string;
-
-      if (isArray(typography[key.key as keyof Theme["typography"]])) {
-        const values: string[] = [];
-        for (const val of typography[key.key as keyof Theme["typography"]] as string[]) {
-          values.push(
-            generateThemeValue({
-              value: val!,
-              type: kebabCase(key.key) as any,
-              themePrefix,
-            }),
-          );
-        }
-
-        value = values.join(", ");
-      } else {
-        value = generateThemeValue({
-          value: typography[key.key as keyof Theme["typography"]]!,
-          type: kebabCase(key.key) as any,
-          themePrefix,
-        });
-      }
-
-      result += `${key.prefix}-${themePrefix}: ${value};\n`;
+    const value = typography[key.key as keyof Theme["typography"]];
+    if (!isUndefined(value)) {
+      result = `${result}${generateVarLine({
+        type: key.type,
+        name: themePrefix,
+        themePrefix,
+        value: isArray(value) ? trim(reduce(value, (res, val, _) => `${res}"${val}", `, ""), " ,") : value,
+      })}\n`;
     }
   }
 

@@ -1,74 +1,31 @@
-import { Arrayable, isArray, isFunction, isNumber, isString } from "@vir/utils";
-import { numberToColorHex } from "@/private-utils";
+import { Arrayable, isArray, isFunction, isNumber, isString, isStringNonEmpty } from "@vir/utils";
 import { generateThemeValueOptions, VarType } from "./utils";
 import { Theme } from "@/types";
-
-const DOT_REPLACE_REGEX = /(?<!\\)\./g;
-const SLASH_DOT_REPLACE_REGEX = /\\\./g;
-const THEME_DOT_PREFIX = "..";
-const GLOBAL_DOT_PREFIX = ".";
-const VAR_PREFIX = "--";
-
-function addPx (value: number): string {
-  return `${value}px`;
-}
-
-const TypePrefix: Record<
-  VarType,
-  {
-    numberFn?: (value: number) => string;
-    prefix: string;
-  }
-> = {
-  color: {
-    numberFn: numberToColorHex,
-    prefix: "color",
-  },
-  spacing: {
-    numberFn: addPx,
-    prefix: "spacing",
-  },
-  "font-size": {
-    numberFn: addPx,
-    prefix: "text",
-  },
-  "font-family": {
-    prefix: "font",
-  },
-  breakpoint: {
-    prefix: "breakpoint",
-    numberFn: addPx,
-  },
-  container: {
-    prefix: "container",
-    numberFn: addPx,
-  },
-  "font-weight": {
-    prefix: "font-weight",
-  },
-  "line-height": {
-    prefix: "leading",
-  },
-  "letter-spacing": {
-    prefix: "tracking",
-  },
-  "border-radius": {
-    prefix: "radius",
-    numberFn: addPx,
-  },
-};
+import {
+  TypePrefix,
+  DOT_REPLACE_REGEX,
+  SLASH_DOT_REPLACE_REGEX,
+  THEME_DOT_PREFIX,
+  GLOBAL_DOT_PREFIX,
+  VAR_PREFIX,
+  NOTHING_DOT_PREFIX,
+  VAR_SEPARATOR,
+} from "./consts";
 
 function replaceDots (str: string, prefix: string, index: number): string {
-  return `${VAR_PREFIX}${prefix}-${str.slice(index).replace(DOT_REPLACE_REGEX, "-").replace(SLASH_DOT_REPLACE_REGEX, ".")}`;
+  const pr = isStringNonEmpty(prefix) ? `${prefix}${VAR_SEPARATOR}` : "";
+  return `${VAR_PREFIX}${pr}${str.slice(index).replace(DOT_REPLACE_REGEX, VAR_SEPARATOR).replace(SLASH_DOT_REPLACE_REGEX, ".")}`;
 }
 function toVarName (type: VarType, value: string, themePrefix: Theme["prefix"]): string {
   const typePrefix = TypePrefix[type]?.prefix ?? "";
   let result: string;
 
-  if (value.startsWith(THEME_DOT_PREFIX)) {
-    result = replaceDots(value, themePrefix, 2);
+  if (value.startsWith(NOTHING_DOT_PREFIX)) {
+    result = replaceDots(value, "", NOTHING_DOT_PREFIX.length);
+  } else if (value.startsWith(THEME_DOT_PREFIX)) {
+    result = replaceDots(value, themePrefix, THEME_DOT_PREFIX.length);
   } else if (value.startsWith(GLOBAL_DOT_PREFIX)) {
-    result = replaceDots(value, typePrefix, 1);
+    result = replaceDots(value, typePrefix, GLOBAL_DOT_PREFIX.length);
   } else {
     result = value;
   }
@@ -103,7 +60,11 @@ function _toVarStatement (
 
   return result;
 }
-function toVarStatement (type: VarType, value: Arrayable<string>, themePrefix: Theme["prefix"]): string {
+function toVarStatement (
+  type: VarType,
+  value: Arrayable<string>,
+  themePrefix: Theme["prefix"],
+): string {
   return _toVarStatement(type, isArray(value) ? value : [value], 0, themePrefix);
 }
 

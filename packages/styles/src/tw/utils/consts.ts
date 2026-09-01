@@ -3,6 +3,7 @@ import { VarType } from "./utils";
 
 export const DOT_REPLACE_REGEX = /(?<!\\)\./g;
 export const SLASH_DOT_REPLACE_REGEX = /\\\./g;
+export const NOTHING_DOT_PREFIX = "...";
 export const THEME_DOT_PREFIX = "..";
 export const GLOBAL_DOT_PREFIX = ".";
 export const VAR_PREFIX = "--";
@@ -11,6 +12,7 @@ export const DEFAULT_ROLE_NAME = "DEFAULT";
 export const BORDER_PREFIX = "border";
 export const DIVIDER_PREFIX = "divider";
 export const OUTLINE_PREFIX = "outline";
+export const SURFACE_PREFIX = "surface";
 export const UTILITY_PREFIX = "@utility";
 
 function addPx (value: number): string {
@@ -24,6 +26,9 @@ export const TypePrefix: Record<
     prefix: string;
   }
 > = {
+  none: {
+    prefix: "",
+  },
   color: {
     numberFn: numberToColorHex,
     prefix: "color",

@@ -2,6 +2,7 @@ import { Theme } from "@/types";
 import { Numberish } from "@vir/utils";
 
 export type VarType =
+  | "none"
   | "color"
   | "spacing"
   | "font-size"

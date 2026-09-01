@@ -152,5 +152,13 @@ export const EXPECTED = {
 --leading-${VIR_THEME.prefix}: 1.5;
 --tracking-${VIR_THEME.prefix}: 0;
 `,
-  zIndex: "",
+  zIndex: `@utility z-base { z-index: 0; }
+@utility z-dropdown { z-index: 1010; }
+@utility z-sticky { z-index: 1020; }
+@utility z-overlay { z-index: 1030; }
+@utility z-modal { z-index: 1040; }
+@utility z-popover { z-index: 1050; }
+@utility z-tooltip { z-index: 1060; }
+@utility z-toast { z-index: 1070; }
+`,
 };

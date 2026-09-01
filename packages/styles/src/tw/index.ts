@@ -1,0 +1,1 @@
+export { generateTailwindTheme } from "./generate-tw-theme";

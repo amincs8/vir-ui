@@ -8,6 +8,8 @@ export const GLOBAL_DOT_PREFIX = ".";
 export const VAR_PREFIX = "--";
 export const VAR_SEPARATOR = "-";
 export const DEFAULT_ROLE_NAME = "DEFAULT";
+export const BORDER_PREFIX = "border";
+export const DIVIDER_PREFIX = "divider";
 
 function addPx (value: number): string {
   return `${value}px`;

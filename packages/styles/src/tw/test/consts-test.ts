@@ -1,4 +1,5 @@
 import { Theme } from "@/types";
+import { BORDER_PREFIX, DIVIDER_PREFIX, OUTLINE_PREFIX } from "../utils";
 
 const color = {
   DEFAULT: ".white",
@@ -55,9 +56,14 @@ export const VIR_THEME: Theme = {
   },
 
   surface: {
-    background: surfaceRole,
     surface: surfaceRole,
     surfaceVariant: surfaceRole,
+    border: {
+      width: "1px",
+      style: "solid",
+      color: ".gray.200",
+      radius: ".sm",
+    },
   },
   typography: {
     fontFamily: ["sans", "monospace"],
@@ -130,22 +136,46 @@ export const EXPECTED = {
 --color-info-container: var(--color-gray-200);
 --color-info-container-hover: var(--color-gray-200);
 --color-info-on-container: var(--color-brand-800);`,
-  border: `--border-${VIR_THEME.prefix}-width: 1px;
---border-${VIR_THEME.prefix}-style: solid;
---border-${VIR_THEME.prefix}-color: var(--color-gray-200);
---border-${VIR_THEME.prefix}-radius: var(--radius-sm);
+  border: `--${VIR_THEME.prefix}-${BORDER_PREFIX}-width: 1px;
+--${VIR_THEME.prefix}-${BORDER_PREFIX}-style: solid;
+--${VIR_THEME.prefix}-${BORDER_PREFIX}-color: var(--color-gray-200);
+--${VIR_THEME.prefix}-${BORDER_PREFIX}-radius: var(--radius-sm);
 --radius-${VIR_THEME.prefix}: var(--radius-sm);
 `,
-  outline: `--outline-${VIR_THEME.prefix}-width: 1px;
---outline-${VIR_THEME.prefix}-style: solid;
---outline-${VIR_THEME.prefix}-color: var(--color-gray-200);
---outline-${VIR_THEME.prefix}-offset: 2px;
+  outline: `--${VIR_THEME.prefix}-${OUTLINE_PREFIX}-width: 1px;
+--${VIR_THEME.prefix}-${OUTLINE_PREFIX}-style: solid;
+--${VIR_THEME.prefix}-${OUTLINE_PREFIX}-color: var(--color-gray-200);
+--${VIR_THEME.prefix}-${OUTLINE_PREFIX}-offset: 2px;
 `,
-  divider: `--divider-${VIR_THEME.prefix}-width: 1px;
---divider-${VIR_THEME.prefix}-style: solid;
---divider-${VIR_THEME.prefix}-color: var(--color-gray-200);
+  divider: `--${VIR_THEME.prefix}-${DIVIDER_PREFIX}-width: 1px;
+--${VIR_THEME.prefix}-${DIVIDER_PREFIX}-style: solid;
+--${VIR_THEME.prefix}-${DIVIDER_PREFIX}-color: var(--color-gray-200);
 `,
-  surface: "",
+  surface: `--color-surface: white;
+--color-surface-on: var(--color-gray-800);
+--color-surface-hover: var(--color-gray-200);
+--color-surface-active: var(--color-gray-400);
+--color-surface-disabled: var(--color-gray-50);
+--color-surface-on-disabled: var(--color-gray-200);
+--color-surface-variant: white;
+--color-surface-variant-on: var(--color-gray-800);
+--color-surface-variant-hover: var(--color-gray-200);
+--color-surface-variant-active: var(--color-gray-400);
+--color-surface-variant-disabled: var(--color-gray-50);
+--color-surface-variant-on-disabled: var(--color-gray-200);
+--${VIR_THEME.prefix}-surface-border-width: 1px;
+--${VIR_THEME.prefix}-surface-border-style: solid;
+--${VIR_THEME.prefix}-surface-border-color: var(--color-gray-200);
+--${VIR_THEME.prefix}-surface-border-radius: var(--radius-sm);
+--radius-${VIR_THEME.prefix}-surface: var(--radius-sm);
+--${VIR_THEME.prefix}-surface-outline-width: var(--${VIR_THEME.prefix}-outline-width);
+--${VIR_THEME.prefix}-surface-outline-style: var(--${VIR_THEME.prefix}-outline-style);
+--${VIR_THEME.prefix}-surface-outline-color: var(--${VIR_THEME.prefix}-outline-color);
+--${VIR_THEME.prefix}-surface-outline-offset: var(--${VIR_THEME.prefix}-outline-offset);
+--${VIR_THEME.prefix}-surface-divider-width: var(--${VIR_THEME.prefix}-divider-width);
+--${VIR_THEME.prefix}-surface-divider-style: var(--${VIR_THEME.prefix}-divider-style);
+--${VIR_THEME.prefix}-surface-divider-color: var(--${VIR_THEME.prefix}-divider-color);
+`,
   typography: `--font-${VIR_THEME.prefix}: "sans", "monospace";
 --text-${VIR_THEME.prefix}: 16px;
 --font-weight-${VIR_THEME.prefix}: var(--font-weight-semibold);

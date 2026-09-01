@@ -1,5 +1,5 @@
 import { Theme } from "@/types";
-import { UTILITY_PREFIX } from "./consts";
+import { UTILITY_PREFIX } from "@/tw/utils";
 
 export function generateZIndex (zIndex: Theme["zIndex"]): string {
   let zIndexSection = "";

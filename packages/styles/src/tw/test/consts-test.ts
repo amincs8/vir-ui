@@ -42,6 +42,12 @@ export const VIR_THEME: Theme = {
     color: ".gray.200",
     radius: ".sm",
   },
+  outline: {
+    width: "1px",
+    style: "solid",
+    color: ".gray.200",
+    offset: "2px",
+  },
   divider: {
     width: "1px",
     style: "solid",
@@ -56,7 +62,7 @@ export const VIR_THEME: Theme = {
   typography: {
     fontFamily: ["sans", "monospace"],
     fontSize: 16,
-    fontWeight: 700,
+    fontWeight: ".semibold",
     lineHeight: 1.5,
     letterSpacing: "0",
   },
@@ -130,17 +136,21 @@ export const EXPECTED = {
 --border-${VIR_THEME.prefix}-radius: var(--radius-sm);
 --radius-${VIR_THEME.prefix}: var(--radius-sm);
 `,
+  outline: `--outline-${VIR_THEME.prefix}-width: 1px;
+--outline-${VIR_THEME.prefix}-style: solid;
+--outline-${VIR_THEME.prefix}-color: var(--color-gray-200);
+--outline-${VIR_THEME.prefix}-radius: 2px;
+`,
   divider: `--divider-${VIR_THEME.prefix}-width: 1px;
 --divider-${VIR_THEME.prefix}-style: solid;
 --divider-${VIR_THEME.prefix}-color: var(--color-gray-200);
 `,
   surface: "",
-  typography: `
-  --font-base: sans, monospace;
---text-base: 16px;
---font-weight-base: 700;
---leading-base: 1.5;
---tracking-base: 0;
+  typography: `--font-${VIR_THEME.prefix}: "sans", "monospace";
+--text-${VIR_THEME.prefix}: 16px;
+--font-weight-${VIR_THEME.prefix}: var(--font-weight-semibold);
+--leading-${VIR_THEME.prefix}: 1.5;
+--tracking-${VIR_THEME.prefix}: 0;
 `,
   zIndex: "",
 };

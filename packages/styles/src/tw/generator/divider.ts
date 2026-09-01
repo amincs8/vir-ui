@@ -5,12 +5,12 @@ import { VarType } from "@/tw/utils/utils.d";
 
 type KeyType = keyof Theme["divider"];
 
-const KEYS: Record<KeyType, { type: VarType | "" }> = {
+const KEYS: Record<KeyType, { type: VarType }> = {
   width: {
     type: "spacing",
   },
   style: {
-    type: "",
+    type: "none",
   },
   color: {
     type: "color",
@@ -24,15 +24,12 @@ export function generateDivider (divider: Theme["divider"], themePrefix: Theme["
     const keyInfo = KEYS[key as keyof Theme["divider"]];
 
     if (!isUndefined(keyValue)) {
-      const generatedValue =
-        keyInfo.type === ""
-          ? keyValue
-          : generateThemeValue({
-            value: keyValue,
-            type: keyInfo.type,
-            themePrefix,
-          });
-      dividerSection += `${generateVarName(DIVIDER_PREFIX, themePrefix, key)}: ${generatedValue};\n`;
+      const generatedValue = generateThemeValue({
+        value: keyValue,
+        type: keyInfo.type,
+        themePrefix,
+      });
+      dividerSection += `${generateVarName(themePrefix, DIVIDER_PREFIX, key)}: ${generatedValue};\n`;
     }
   }
 

@@ -5,18 +5,18 @@ import { VarType } from "@/tw/utils/utils";
 
 type KeyType = keyof Theme["outline"];
 
-const KEYS: Record<KeyType, { type: VarType | "" }> = {
+const KEYS: Record<KeyType, { type: VarType }> = {
   width: {
     type: "spacing",
   },
   style: {
-    type: "",
+    type: "none",
   },
   color: {
     type: "color",
   },
   offset: {
-    type: "",
+    type: "none",
   },
 };
 
@@ -28,15 +28,12 @@ export function generateOutline (outline: Theme["outline"], themePrefix: Theme["
     const keyInfo = KEYS[key as KeyType];
 
     if (!isUndefined(keyValue)) {
-      const generatedValue =
-        keyInfo.type === ""
-          ? keyValue
-          : generateThemeValue({
-            value: keyValue,
-            type: keyInfo.type,
-            themePrefix,
-          });
-      outlineSection += `${generateVarName(OUTLINE_PREFIX, themePrefix, key)}: ${generatedValue};\n`;
+      const generatedValue = generateThemeValue({
+        value: keyValue,
+        type: keyInfo.type,
+        themePrefix,
+      });
+      outlineSection += `${generateVarName(themePrefix, OUTLINE_PREFIX, key)}: ${generatedValue};\n`;
     }
   }
 

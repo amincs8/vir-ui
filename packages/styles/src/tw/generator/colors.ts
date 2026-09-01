@@ -1,7 +1,6 @@
 import { isPlainObject } from "@vir/utils";
 import { Theme } from "@/types";
-import { DEFAULT_ROLE_NAME } from "./consts";
-import { generateColorVarLine } from "../utils/color";
+import { DEFAULT_ROLE_NAME, generateVarLine } from "../utils";
 
 export function generateColors (colors: Theme["colors"], themePrefix: string): string {
   let result = "";
@@ -15,10 +14,10 @@ export function generateColors (colors: Theme["colors"], themePrefix: string): s
         };
 
       for (const scale in colorValue) {
-        result = `${result}${generateColorVarLine({
-          colorValue: colorValue[scale]!,
-          colorScale: scale,
-          colorName: colorName,
+        result = `${result}${generateVarLine({
+          type: "color",
+          name: [colorName, scale],
+          value: colorValue[scale]!,
           themePrefix,
         })}\n`;
       }

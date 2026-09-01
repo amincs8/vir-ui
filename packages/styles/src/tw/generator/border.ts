@@ -1,8 +1,7 @@
 import { isUndefined } from "@vir/utils";
 import { Theme } from "@/types";
-import { BORDER_PREFIX, generateVarLine, generateVarName } from "../utils";
-import { generateThemeValue } from "@/tw/utils";
-import { VarType } from "../utils/utils";
+import { BORDER_PREFIX, generateVarLine, generateVarName, generateThemeValue } from "@/tw/utils";
+import { VarType } from "@/tw/utils/utils.d";
 
 type KeyType = keyof Theme["border"];
 

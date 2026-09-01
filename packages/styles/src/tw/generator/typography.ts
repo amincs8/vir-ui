@@ -1,7 +1,7 @@
 import { generateVarLine } from "@/tw/utils";
 import { Theme } from "@/types";
 import { isArray, isUndefined, reduce, trim } from "@vir/utils";
-import { VarType } from "../utils/utils";
+import { VarType } from "@/tw/utils/utils.d";
 
 const KEYS: {
   key: string;

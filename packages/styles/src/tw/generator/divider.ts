@@ -1,8 +1,7 @@
 import { isUndefined } from "@vir/utils";
 import { Theme } from "@/types";
-import { generateThemeValue } from "@/tw/utils";
-import { DIVIDER_PREFIX, generateVarName } from "../utils";
-import { VarType } from "../utils/utils";
+import { generateThemeValue, DIVIDER_PREFIX, generateVarName } from "@/tw/utils";
+import { VarType } from "@/tw/utils/utils.d";
 
 type KeyType = keyof Theme["divider"];
 

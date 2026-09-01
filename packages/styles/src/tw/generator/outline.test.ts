@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { EXPECTED, VIR_THEME } from "../test/consts-test";
+import { EXPECTED, VIR_THEME } from "@/tw/test/consts-test";
 import { generateOutline } from "./outline";
 
 describe("Tailwind Generators: Outline", () => {

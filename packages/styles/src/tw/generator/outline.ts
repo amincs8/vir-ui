@@ -1,8 +1,7 @@
 import { isUndefined } from "@vir/utils";
 import { Theme } from "@/types";
-import { OUTLINE_PREFIX, generateVarName } from "../utils";
-import { generateThemeValue } from "@/tw/utils";
-import { VarType } from "../utils/utils";
+import { OUTLINE_PREFIX, generateVarName, generateThemeValue } from "@/tw/utils";
+import { VarType } from "@/tw/utils/utils";
 
 type KeyType = keyof Theme["outline"];
 

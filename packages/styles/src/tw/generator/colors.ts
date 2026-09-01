@@ -1,6 +1,6 @@
 import { isPlainObject } from "@vir/utils";
 import { Theme } from "@/types";
-import { DEFAULT_ROLE_NAME, generateVarLine } from "../utils";
+import { DEFAULT_ROLE_NAME, generateVarLine } from "@/tw/utils";
 
 export function generateColors (colors: Theme["colors"], themePrefix: Theme["prefix"]): string {
   let result = "";

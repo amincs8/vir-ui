@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { generateColors } from "./colors";
 import { Theme } from "@/types";
-import { EXPECTED, VIR_THEME } from "../test/consts-test";
+import { EXPECTED, VIR_THEME } from "@/tw/test/consts-test";
 
 describe("Tailwind Generators: Colors", () => {
   it("should generate CSS variables for colors", () => {

@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { generateDivider } from "./divider";
-import { EXPECTED, VIR_THEME } from "../test/consts-test";
+import { EXPECTED, VIR_THEME } from "@/tw/test/consts-test";
 
 describe("Tailwind Generators: Divider", () => {
   it("should generate CSS variables for divider", () => {

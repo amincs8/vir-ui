@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { generateZIndex } from "./z-index";
-import { EXPECTED, VIR_THEME } from "../test/consts-test";
+import { EXPECTED, VIR_THEME } from "@/tw/test/consts-test";
 
 describe("Tailwind Generators: zIndex", () => {
   it("should generate z-index utilities", () => {

@@ -10,6 +10,8 @@ import {
   generateContainer,
 } from "./generator";
 
+import { writeFileSync } from "node:fs";
+
 const VAR_GENERATORS: Record<string, (...config: any[]) => string> = {
   colors: generateColors,
   semanticColors: generateColors,
@@ -37,11 +39,18 @@ export function generateTailwindTheme (theme: Theme): string {
   }
 
   for (const key in UTILITY_GENERATORS) {
-    utilitySection += UTILITY_GENERATORS[key as keyof typeof UTILITY_GENERATORS]!(
-      theme[key as keyof typeof theme]!,
-      theme.prefix,
-    ) + "\n";
+    utilitySection +=
+      UTILITY_GENERATORS[key as keyof typeof UTILITY_GENERATORS]!(
+        theme[key as keyof typeof theme]!,
+        theme.prefix,
+      ) + "\n";
   }
 
   return `@theme {\n${themeSection}}\n${utilitySection}`;
+}
+
+export function generateTailwindThemeFile (theme: Theme, outputPath: string) {
+  const generatedTheme = generateTailwindTheme(theme);
+
+  writeFileSync(outputPath, generatedTheme);
 }

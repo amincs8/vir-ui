@@ -1,5 +1,5 @@
 import { Theme } from "@/types";
-import { BORDER_PREFIX, DIVIDER_PREFIX, OUTLINE_PREFIX } from "../utils";
+import { BORDER_PREFIX, DIVIDER_PREFIX, OUTLINE_PREFIX, UTILITY_PREFIX } from "../utils";
 
 const color = {
   DEFAULT: ".white",
@@ -81,6 +81,16 @@ export const VIR_THEME: Theme = {
     popover: 1050,
     tooltip: 1060,
     toast: 1070,
+  },
+  container: {
+    center: true,
+    paddingY: 16,
+    paddingX: [
+      ["DEFAULT", 8],
+      ["[360px]", 12],
+      [640, 16],
+      ["lg", 16],
+    ],
   },
 };
 
@@ -191,4 +201,5 @@ export const EXPECTED = {
 @utility z-tooltip { z-index: 1060; }
 @utility z-toast { z-index: 1070; }
 `,
+  container: `${UTILITY_PREFIX} container { @apply mx-auto px-8 [360px]:px-12 [640px]:px-16 lg:px-16 py-16 }`,
 };

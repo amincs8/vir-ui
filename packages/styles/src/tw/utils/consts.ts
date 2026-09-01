@@ -14,6 +14,7 @@ export const DIVIDER_PREFIX = "divider";
 export const OUTLINE_PREFIX = "outline";
 export const SURFACE_PREFIX = "surface";
 export const UTILITY_PREFIX = "@utility";
+export const CONTAINER_CLASS_NAME = "container";
 
 function addPx (value: number): string {
   return `${value}px`;

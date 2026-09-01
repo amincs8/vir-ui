@@ -1,3 +1,4 @@
+import { Theme } from "@/types";
 import { Numberish } from "@vir/utils";
 
 export type VarType =
@@ -15,5 +16,5 @@ export type VarType =
 export interface generateThemeValueOptions {
   type: VarType;
   value: Numberish | string[];
-  themePrefix: string;
+  themePrefix: Theme["prefix"]
 }

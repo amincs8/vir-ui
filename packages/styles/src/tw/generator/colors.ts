@@ -2,7 +2,7 @@ import { isPlainObject } from "@vir/utils";
 import { Theme } from "@/types";
 import { DEFAULT_ROLE_NAME, generateVarLine } from "../utils";
 
-export function generateColors (colors: Theme["colors"], themePrefix: string): string {
+export function generateColors (colors: Theme["colors"], themePrefix: Theme["prefix"]): string {
   let result = "";
 
   if (isPlainObject(colors)) {

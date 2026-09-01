@@ -1,6 +1,7 @@
 import { Arrayable, isArray, isFunction, isNumber, isString } from "@vir/utils";
 import { numberToColorHex } from "@/private-utils";
 import { generateThemeValueOptions, VarType } from "./utils";
+import { Theme } from "@/types";
 
 const DOT_REPLACE_REGEX = /(?<!\\)\./g;
 const SLASH_DOT_REPLACE_REGEX = /\\\./g;
@@ -60,7 +61,7 @@ const TypePrefix: Record<
 function replaceDots (str: string, prefix: string, index: number): string {
   return `${VAR_PREFIX}${prefix}-${str.slice(index).replace(DOT_REPLACE_REGEX, "-").replace(SLASH_DOT_REPLACE_REGEX, ".")}`;
 }
-function toVarName (type: VarType, value: string, themePrefix: string): string {
+function toVarName (type: VarType, value: string, themePrefix: Theme["prefix"]): string {
   const typePrefix = TypePrefix[type]?.prefix ?? "";
   let result: string;
 
@@ -102,7 +103,7 @@ function _toVarStatement (
 
   return result;
 }
-function toVarStatement (type: VarType, value: Arrayable<string>, themePrefix: string): string {
+function toVarStatement (type: VarType, value: Arrayable<string>, themePrefix: Theme["prefix"]): string {
   return _toVarStatement(type, isArray(value) ? value : [value], 0, themePrefix);
 }
 

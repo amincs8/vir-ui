@@ -1,14 +1,16 @@
-import { isArray, isStringNonEmpty, kebabCase, Numberish } from "@vir/utils";
+import { isArray, isStringNonEmpty, kebabCase } from "@vir/utils";
 import { DEFAULT_ROLE_NAME, TypePrefix, VAR_PREFIX, VAR_SEPARATOR } from "./consts";
 import { generateThemeValue } from "./tw";
+import { generateThemeValueOptions } from "./utils";
+import { Theme } from "@/types";
 
 type Arg = string | undefined;
 
 interface GenerateVarLineOptions {
   type: keyof typeof TypePrefix;
   name: string | string[];
-  value: Numberish;
-  themePrefix: string;
+  value: generateThemeValueOptions["value"];
+  themePrefix: Theme["prefix"];
 }
 
 export function generateVarName(...values: Arg[]): string;

@@ -1,20 +1,53 @@
 import { isUndefined } from "@vir/utils";
 import { Theme } from "@/types";
+import { BORDER_PREFIX, generateVarLine, generateVarName } from "../utils";
+import { generateTailwindThemeValue } from "@/private-utils";
+import { VarType } from "../utils/utils";
 
-const KEYS = [
-  "width",
-  "style",
-  "color",
-  "radius",
-] as const satisfies readonly (keyof Theme["border"])[];
+type KeyType = keyof Theme["border"];
 
-export function generateBorder (border: Theme["border"], prefix: Theme["prefix"]): string {
+const KEYS: Record<KeyType, { type: VarType | "" }> = {
+  width: {
+    type: "spacing",
+  },
+  style: {
+    type: "",
+  },
+  color: {
+    type: "color",
+  },
+  radius: {
+    type: "border-radius",
+  },
+};
+
+export function generateBorder (border: Theme["border"], themePrefix: Theme["prefix"]): string {
   let borderSection = "";
 
-  for (const key of KEYS) {
-    if (!isUndefined(border[key])) {
-      borderSection += `--border-${prefix}-${key}: ${border[key]};\n`;
+  for (const key in KEYS) {
+    const keyValue = border[key as KeyType];
+    const keyInfo = KEYS[key as KeyType];
+
+    if (!isUndefined(keyValue)) {
+      const generatedValue =
+        keyInfo.type === ""
+          ? keyValue
+          : generateTailwindThemeValue({
+            value: keyValue,
+            type: keyInfo.type,
+            themePrefix,
+          });
+      borderSection += `${generateVarName(BORDER_PREFIX, themePrefix, key)}: ${generatedValue};\n`;
     }
+  }
+
+  if (!isUndefined(border.radius)) {
+    borderSection += `${generateVarLine({
+      type: KEYS["radius"].type as VarType,
+      value: border.radius,
+      name: themePrefix,
+      themePrefix,
+    })}\n`;
   }
 
   return borderSection;
